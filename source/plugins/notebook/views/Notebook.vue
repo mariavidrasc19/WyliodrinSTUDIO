@@ -1,5 +1,25 @@
 <template>
 	<div class="notebook-box" v-if="currentProject" ref="notebook" @click.self="showCurrentElement(null)">
+
+		<v-tooltip bottom>
+			<template v-slot:activator="{ on }">
+				<v-btn text @click="saveElement" class="ntbk-btn">
+					<v-img src="plugins/notebook/data/img/icons/download.png"></v-img>
+				</v-btn>
+			</template>
+			<span>Save</span>
+		</v-tooltip>
+
+
+		<v-tooltip bottom>
+			<template v-slot:activator="{ on }">
+				<v-btn text @click="saveElement" class="ntbk-btn">
+					<v-img src="plugins/notebook/data/img/icons/running.gif"></v-img>
+				</v-btn>
+			</template>
+			<span>Save</span>
+		</v-tooltip>
+
 		<li v-for="element in elements" :key="element.id">
 			<div @click="showCurrentElement(element)">
 			<v-layout>
@@ -385,6 +405,10 @@ export default {
 					result: ''
 				});
 			this.onlyOne = false;
+		},
+		saveElement()
+		{
+			
 		},
 		firstElement(id)
 		{
